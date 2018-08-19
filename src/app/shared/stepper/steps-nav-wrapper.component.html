@@ -1,0 +1,18 @@
+<!-- <ng-container *ngFor="let step of steps">
+    <a>{{ step.label }}</a>
+</ng-container> -->
+
+<mat-card>
+    <mat-card-content>
+        <mat-horizontal-stepper [linear]="true">
+            <ng-template matStepperIcon="edit">
+                    <mat-icon>check</mat-icon>
+                </ng-template>
+            <ng-container *ngFor="let step of steps">
+                <mat-step >
+                    <ng-template matStepLabel>{{ step.label }}</ng-template>
+                </mat-step>
+            </ng-container>
+        </mat-horizontal-stepper>
+    </mat-card-content>
+</mat-card>    

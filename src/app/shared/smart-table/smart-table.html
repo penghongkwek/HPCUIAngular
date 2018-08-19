@@ -1,0 +1,30 @@
+
+<div class="example-header">
+    <mat-form-field>
+        <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+    </mat-form-field>
+</div>
+      
+<div class="example-container mat-elevation-z8">
+    <mat-table #table [dataSource]="dataSource" matSort>
+        <ng-container *ngFor="let column of columns" [cdkColumnDef]="column.columnDef">
+            <mat-header-cell *cdkHeaderCellDef>{{ column.header }}</mat-header-cell>
+            <mat-cell *cdkCellDef="let row">{{ column.cell(row) }}</mat-cell>
+        </ng-container>
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+    <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+</div>
+      
+      
+      <!-- Copyright 2018 Google Inc. All Rights Reserved.
+          Use of this source code is governed by an MIT-style license that
+          can be found in the LICENSE file at http://angular.io/license -->
+
+    <!-- <ng-container *ngFor="let step of steps">
+            <ng-container matColumnDef="{{step.id}}">
+                <mat-header-cell *matHeaderCellDef mat-sort-header> {{step.label}} </mat-header-cell>
+                <mat-cell *matCellDef="let row"> {{row.id}} </mat-cell>
+            </ng-container>
+    </ng-container> -->
