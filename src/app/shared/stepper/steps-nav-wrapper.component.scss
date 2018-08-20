@@ -1,0 +1,101 @@
+@import '../_colors.scss';
+
+.steps-container {
+    display: table;
+    width: 100%;
+    position: relative; 
+    justify-content: space-between;
+    margin-bottom: 40px;
+
+    .steps-row {
+        display: table-row;
+
+        .steps-step {
+            display: table-cell;
+            text-align: center;
+            align-items: center;
+            position: relative;
+
+            // &.next {
+            //     border: 2px solid #3383c8;
+            //     color: #3383c8;
+            //     right: 1%;
+
+            //     &.disabled {
+            //         border: 2px solid #cccccc !important;
+            //         color: #cccccc;
+            //         cursor: not-allowed !important;
+            //     }
+            // }
+
+            &.disabled {
+                cursor: not-allowed !important;
+                pointer-events: none;
+                .step-btn-circle {
+                    i {
+                        background-color: $step-button-disabled-bg;
+                    }
+                }
+                
+                .step-title {
+                    opacity: .35;
+                }
+            }
+
+            .step-title {
+                margin-top: 1.5em;
+                position: absolute;
+                top: 90%;
+                width: 100%;
+                h1,
+                h2,
+                h3,
+                h4,
+                h5 {
+                    margin: 0 0 .2rem 0;
+                    color: #333333;
+                    font-weight: lighter;
+                }
+            }
+
+            .step-btn-circle {
+                background-color: $step-button-bg !important;
+                padding: 0 1rem;
+                margin-bottom: 1em;
+
+                i {
+                    background-color: #3383c8;
+                    color: #fff;
+                    border-radius: 1em;
+                    padding: 0.5em;
+                }
+
+            }
+
+            .step-btn-circle:hover {
+                i {
+                    border: #4285F4;
+                    background-color: $step-button-hover-bg !important;
+                    color: $step-button-hover-color !important;
+                }
+            }
+            
+        }
+    }
+
+    .steps-row:before {
+        top: 50%;
+        bottom: 0;
+        position: absolute;
+        content: " ";
+        width: 100%;
+        height: 2px;
+        background-color: $step-line-color; 
+    }
+
+}
+
+.justify-content-between {
+    -ms-flex-pack: justify !important;
+    justify-content: space-between !important;
+}

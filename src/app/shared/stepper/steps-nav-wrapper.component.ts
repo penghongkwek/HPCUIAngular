@@ -12,7 +12,8 @@ import { StepsNavWrapperModel } from './steps-nav-wrapper.model';
 
 @Component({
   selector: 'app-steps-nav-wrapper',
-  templateUrl: './steps-nav-wrapper.component.html'
+  templateUrl: './steps-nav-wrapper.component.html',
+  styleUrls: ['./steps-nav-wrapper.component.scss'],
 })
 export class StepsNavWrapperComponent implements OnInit {
 

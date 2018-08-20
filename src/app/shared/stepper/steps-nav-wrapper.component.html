@@ -1,18 +1,16 @@
-<!-- <ng-container *ngFor="let step of steps">
-    <a>{{ step.label }}</a>
-</ng-container> -->
-
-<mat-card>
-    <mat-card-content>
-        <mat-horizontal-stepper [linear]="true">
-            <ng-template matStepperIcon="edit">
-                    <mat-icon>check</mat-icon>
-                </ng-template>
-            <ng-container *ngFor="let step of steps">
-                <mat-step >
-                    <ng-template matStepLabel>{{ step.label }}</ng-template>
-                </mat-step>
-            </ng-container>
-        </mat-horizontal-stepper>
-    </mat-card-content>
-</mat-card>    
+<div class="steps-container" id="stepNav">
+        <div class="steps-row justify-content-between">
+             <ng-container *ngFor="let step of steps">
+                <div class="steps-step" [class.disabled]="step.disabled">
+                    <a routerLink="{{step.routerLink}}" [routerLinkActive]="['active']" title="{{step.label}}" type="button" class="step-btn-circle">
+                       <i class="icon material-icons">{{step.icon}}</i>
+                    </a>
+                    <div class="step-title">
+                        <h5>{{step.label}}</h5>
+                    </div>
+                </div>
+            </ng-container> 
+            <div class="clearfix"></div>
+        </div>
+    </div>
+    

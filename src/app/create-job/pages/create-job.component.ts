@@ -1,5 +1,5 @@
-import { Component, OnInit, ViewChild, Input } from '@angular/core';
-// import { StepsNavWrapperModel } from '../../shared/public_api';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { StepsNavWrapperModel } from '../../shared/public_api';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import {
   JobSettingsComponent,
@@ -13,27 +13,23 @@ import {
 })
 export class CreateJobComponent implements OnInit {
 
-  @ViewChild(JobSettingsComponent) stepOneComponent: JobSettingsComponent;
-  @ViewChild(RecommendationsComponent) stepTwoComponent: RecommendationsComponent;
+  stepItems: StepsNavWrapperModel[];
 
-  get frmStepOne() {
-    return this.stepOneComponent ? this.stepOneComponent.frmStepOne : null;
- }
-
- get frmStepTwo() {
-    return this.stepTwoComponent ? this.stepTwoComponent.frmStepTwo : null;
- }
-
-  // stepItems: StepsNavWrapperModel[];
-
-  // jobForm: FormGroup;
+  jobForm: FormGroup;
 
   constructor(private fb: FormBuilder) { }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.stepItems = [
+      {id: '1', label: 'Job Settings', routerLink: 'settings', icon: 'assignment', disabled: false},
+      {id: '2', label: 'Recommendations', routerLink: 'recommendations', icon: 'chat_bubble_outline', disabled: false},
+      {id: '3', label: 'Confirmation', routerLink: 'confirmation', icon: 'pageview', disabled: false},
+      {id: '4', label: 'Submitted', routerLink: 'submitted', icon: 'done', disabled: false}
+    ];
+  }
 
   submitForm(): void {
-    // console.log('saved' + JSON.stringify(this.jobForm.value));
+    console.log('saved' + JSON.stringify(this.jobForm.value));
   }
 
   populateMockData(): void {

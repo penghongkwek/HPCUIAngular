@@ -1,7 +1,4 @@
 import { Component, Output, EventEmitter, Input, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-
-import { CreateJobComponent } from '../../pages/create-job.component';
 
 @Component({
   selector: 'app-job-settings',
@@ -10,13 +7,10 @@ import { CreateJobComponent } from '../../pages/create-job.component';
 })
 export class JobSettingsComponent implements OnInit {
 
-  frmStepOne: FormGroup;
 
-  constructor(private formBuilder: FormBuilder) {}
+  constructor() {}
 
   ngOnInit() {
-    this.frmStepOne = this.formBuilder.group({
-        name: ['', Validators.required]
-    });
+
   }
 }
