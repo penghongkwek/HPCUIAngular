@@ -3,6 +3,7 @@ import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MaterialModule } from '../material-module';
+import { SharedModule } from './../shared/shared.module';
 import { routes } from './jobs.routing';
 
 import {
@@ -16,6 +17,7 @@ import { JobsComponent } from './pages/jobs.component';
     CommonModule,
     FlexLayoutModule,
     MaterialModule,
+    SharedModule,
     RouterModule.forChild(routes)
   ],
   declarations: [

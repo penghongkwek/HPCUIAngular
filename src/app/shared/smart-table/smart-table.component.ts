@@ -11,17 +11,12 @@ import {DataSource} from '@angular/cdk/collections';
 import {Observable} from 'rxjs/Observable';
 import 'rxjs/add/observable/of';
 
-import { SmartTableModel } from './smart-table.model';
-
 @Component({
   selector: 'app-smart-table',
   templateUrl: './smart-table.html',
   styleUrls: ['./smart-table.css'],
 })
 export class SmartTableComponent implements AfterViewInit {
-
-  @ViewChild(MatPaginator) paginator: MatPaginator;
-  @ViewChild(MatSort) sort: MatSort;
 
   columns = [
     { columnDef: 'position', header: 'No.',    cell: (element: any) => `${element.position}` },
@@ -32,6 +27,9 @@ export class SmartTableComponent implements AfterViewInit {
 
   displayedColumns = this.columns.map(c => c.columnDef);
   dataSource: MatTableDataSource<UserData>;
+
+  @ViewChild(MatPaginator) paginator: MatPaginator;
+  @ViewChild(MatSort) sort: MatSort;
 
   constructor() {
     const ELEMENT_DATA: any[] = [
