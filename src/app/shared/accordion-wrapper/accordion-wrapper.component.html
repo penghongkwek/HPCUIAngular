@@ -1,0 +1,19 @@
+<!-- <mat-accordion>
+    <mat-expansion-panel>
+        <mat-expansion-panel [expanded]="header.expanded">
+            <mat-expansion-panel-header>
+                <mat-panel-title> {{header.title}} </mat-panel-title>
+                <mat-panel-description *ngIf="header.description">{{header.description}}</mat-panel-description>
+            </mat-expansion-panel-header>
+        </mat-expansion-panel>
+        <ng-content></ng-content>
+      </mat-expansion-panel>
+</mat-accordion> -->
+
+    <mat-expansion-panel [expanded]="header.expanded">
+      <mat-expansion-panel-header>
+        <mat-panel-title>{{header.title}}</mat-panel-title>
+        <mat-panel-description *ngIf="header.description">{{header.description}}</mat-panel-description>
+      </mat-expansion-panel-header>
+      <ng-content></ng-content>
+    </mat-expansion-panel>

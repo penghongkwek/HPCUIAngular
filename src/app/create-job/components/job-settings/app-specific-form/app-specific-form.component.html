@@ -1,0 +1,20 @@
+ <div [formGroup]="appSpecificFormGroup">
+  <div *ngFor="let prop of objectProps">
+    <div [ngSwitch]="prop.type">
+      <div fxLayout="row" fxLayoutAlign="space-even">
+        <div *ngSwitchCase="'inputBrowse'" class="column-90">
+          <mat-form-field fxFlex="1 0 auto">
+            <input matInput placeholder="{{prop.label}}" [formControlName]="prop.key" [id]="prop.key">
+          </mat-form-field>
+          <button mat-raised-button (click)="onClickHandler($event)" [id]="prop.key + '_btn'" fxFlex="0 1 auto">Browse...</button>
+        </div>
+        <mat-form-field *ngSwitchCase="'input'" fxFlex="1 0 auto">
+          <input matInput placeholder="{{prop.label}}" [formControlName]="prop.key" [id]="prop.key">
+        </mat-form-field>
+        <mat-form-field *ngSwitchCase="'textArea'" fxFlex="1 0 auto">
+          <textarea matInput matTextareaAutosize matAutosizeMinRows="8" placeholder="{{prop.label}}" [formControlName]="prop.key" [id]="prop.key"></textarea>
+        </mat-form-field>
+      </div>
+    </div>
+  </div>
+</div> 

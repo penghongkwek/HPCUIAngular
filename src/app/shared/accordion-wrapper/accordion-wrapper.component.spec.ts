@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CreateJobComponent } from './create-job.component';
+import { AccordionWrapperComponent } from './accordion-wrapper.component';
 
-describe('CreateJobComponent', () => {
-  let component: CreateJobComponent;
-  let fixture: ComponentFixture<CreateJobComponent>;
+describe('AccordionWrapperComponent', () => {
+  let component: AccordionWrapperComponent;
+  let fixture: ComponentFixture<AccordionWrapperComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ CreateJobComponent ]
+      declarations: [ AccordionWrapperComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(CreateJobComponent);
+    fixture = TestBed.createComponent(AccordionWrapperComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

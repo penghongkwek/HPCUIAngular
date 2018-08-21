@@ -9,6 +9,12 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { CreateJobComponent } from './pages/create-job.component';
 
+import { CreateJobDataService } from './pages/create-job.dataservice';
+
+import { PrioritiesResolver, SitesResolver, ApplicationsResolver } from './components/job-settings/job-settings-resolver.service';
+
+import { AppSpecificFormComponent } from './components/job-settings/app-specific-form/app-specific-form.component';
+
 import {
   JobSettingsComponent,
   RecommendationsComponent
@@ -27,12 +33,20 @@ import {
   declarations: [
     CreateJobComponent,
     JobSettingsComponent,
-    RecommendationsComponent
+    RecommendationsComponent,
+    AppSpecificFormComponent
   ],
   exports: [
     CreateJobComponent,
     JobSettingsComponent,
-    RecommendationsComponent
+    RecommendationsComponent,
+    AppSpecificFormComponent
+  ],
+  providers: [
+    CreateJobDataService,
+    PrioritiesResolver,
+    SitesResolver,
+    ApplicationsResolver
   ]
 })
 

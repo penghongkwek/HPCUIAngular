@@ -1,1 +1,54 @@
-Job Settings Works!
+<form [formGroup]="jobSettingsForm" novalidate>
+  <mat-card>
+    <mat-card-content>
+      <mat-accordion>
+        <app-accordion-wrapper [header]="panels[0]">
+            <div fxLayout fxLayout.xs="row" fxLayoutWrap fxLayoutGap="15px">
+              <div fxLayout="column" fxFlex="calc(50%-25px)" fxLayoutGap="15px">
+                  <div>
+                      <mat-form-field>
+                        <input matInput placeholder="{{jobSettingsLabels.name}}" formControlName="name">
+                      </mat-form-field>
+                  </div>
+                  <div fxLayout="row" fxLayoutGap="15px">
+                    <mat-form-field>
+                      <input matInput placeholder="{{jobSettingsLabels.configpath}}" formControlName="configpath">
+                    </mat-form-field>
+                    <button mat-raised-button (click)="onBrowseClickHandler($event)" id="configpath_btn">Browse...</button>
+                  </div>
+                  <div>
+                      <mat-form-field>
+                        <input matInput placeholder="{{jobSettingsLabels.walltime}}" formControlName="walltime">
+                      </mat-form-field>
+                  </div>
+              </div>
+              <div fxLayout="column" fxFlex="calc(50%-25px)" fxLayoutGap="15px">
+                  <div>
+                      <mat-form-field formGroupName="app" >
+                        <mat-select placeholder="{{jobSettingsLabels.app}}" (change)="onAppChange($event)" formControlName="name">
+                          <mat-option *ngFor="let application of applications"[value]="application">{{application}}</mat-option>
+                        </mat-select>
+                      </mat-form-field>
+                  </div>
+                  <div>
+                      <mat-form-field>
+                        <mat-select placeholder="{{jobSettingsLabels.priority}}" formControlName="priority">
+                          <mat-option *ngFor="let priority of priorities" [value]="priority">{{priority}}</mat-option>
+                        </mat-select>
+                      </mat-form-field>
+                  </div>
+                  <div>
+                      <mat-form-field>
+                        <mat-select placeholder="{{jobSettingsLabels.sites}}" multiple formControlName="sites">
+                          <mat-option *ngFor="let site of siteList" [value]="site">{{site}}</mat-option>
+                        </mat-select>
+                      </mat-form-field>
+                  </div>
+              </div>
+            </div>
+        </app-accordion-wrapper>
+        <app-accordion-wrapper [header]="panels[1]"></app-accordion-wrapper>
+      </mat-accordion>
+    </mat-card-content>
+  </mat-card>
+</form>

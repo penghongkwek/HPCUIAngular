@@ -6,6 +6,8 @@ import {
 } from './components/index';
 
 import { CreateJobComponent } from './pages/create-job.component';
+import { PrioritiesResolver, SitesResolver, ApplicationsResolver } from './components/job-settings/job-settings-resolver.service';
+
 
 export const routes: Routes = [{
   path: '',
@@ -17,7 +19,12 @@ export const routes: Routes = [{
     },
     {
       path: 'settings',
-      component: JobSettingsComponent
+      component: JobSettingsComponent,
+      resolve: {
+        priorities: PrioritiesResolver,
+        sites: SitesResolver,
+        apps: ApplicationsResolver
+      }
     },
     {
       path: 'recommendations',

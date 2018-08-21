@@ -1,10 +1,3 @@
-// import {
-//   Component,
-//   OnInit,
-//   Input,
-//   Output,
-//   EventEmitter
-// } from '@angular/core';
 import {Component, ViewChild, AfterViewInit} from '@angular/core';
 import {MatPaginator, MatSort, MatTableDataSource} from '@angular/material';
 import {DataSource} from '@angular/cdk/collections';
@@ -19,10 +12,15 @@ import 'rxjs/add/observable/of';
 export class SmartTableComponent implements AfterViewInit {
 
   columns = [
-    { columnDef: 'position', header: 'No.',    cell: (element: any) => `${element.position}` },
-    { columnDef: 'name',     header: 'Name',   cell: (element: any) => `${element.name}`     },
-    { columnDef: 'weight',   header: 'Weight', cell: (element: any) => `${element.weight}`   },
-    { columnDef: 'symbol',   header: 'Symbol', cell: (element: any) => `${element.symbol}`   },
+    { columnDef: 'job', header: 'Job',    cell: (element: any) => `${element.job}` },
+    { columnDef: 'nodes',     header: 'Nodes',   cell: (element: any) => `${element.nodes}`     },
+    { columnDef: 'core_node',   header: 'Cores/Node', cell: (element: any) => `${element.core_node}`   },
+    { columnDef: 'ram',   header: 'RAM', cell: (element: any) => `${element.ram}`   },
+    { columnDef: 'priority',   header: 'Priority', cell: (element: any) => `${element.priority}`   },
+    { columnDef: 'status',   header: 'Status', cell: (element: any) => `${element.status}`   },
+    { columnDef: 'creation_time',   header: 'Creation Time', cell: (element: any) => `${element.creation_time}`   },
+    { columnDef: 'start_time',   header: 'Start Time', cell: (element: any) => `${element.start_time}`   },
+    { columnDef: 'et_wt',   header: 'Elapsed Time / Wall Time', cell: (element: any) => `${element.et_wt}`   },
   ];
 
   displayedColumns = this.columns.map(c => c.columnDef);
@@ -33,26 +31,46 @@ export class SmartTableComponent implements AfterViewInit {
 
   constructor() {
     const ELEMENT_DATA: any[] = [
-      {position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H'},
-      {position: 2, name: 'Helium', weight: 4.0026, symbol: 'He'},
-      {position: 3, name: 'Lithium', weight: 6.941, symbol: 'Li'},
-      {position: 4, name: 'Beryllium', weight: 9.0122, symbol: 'Be'},
-      {position: 5, name: 'Boron', weight: 10.811, symbol: 'B'},
-      {position: 6, name: 'Carbon', weight: 12.0107, symbol: 'C'},
-      {position: 7, name: 'Nitrogen', weight: 14.0067, symbol: 'N'},
-      {position: 8, name: 'Oxygen', weight: 15.9994, symbol: 'O'},
-      {position: 9, name: 'Fluorine', weight: 18.9984, symbol: 'F'},
-      {position: 10, name: 'Neon', weight: 20.1797, symbol: 'Ne'},
-      {position: 11, name: 'Sodium', weight: 22.9897, symbol: 'Na'},
-      {position: 12, name: 'Magnesium', weight: 24.305, symbol: 'Mg'},
-      {position: 13, name: 'Aluminum', weight: 26.9815, symbol: 'Al'},
-      {position: 14, name: 'Silicon', weight: 28.0855, symbol: 'Si'},
-      {position: 15, name: 'Phosphorus', weight: 30.9738, symbol: 'P'},
-      {position: 16, name: 'Sulfur', weight: 32.065, symbol: 'S'},
-      {position: 17, name: 'Chlorine', weight: 35.453, symbol: 'Cl'},
-      {position: 18, name: 'Argon', weight: 39.948, symbol: 'Ar'},
-      {position: 19, name: 'Potassium', weight: 39.0983, symbol: 'K'},
-      {position: 20, name: 'Calcium', weight: 40.078, symbol: 'Ca'},
+      {job: '382103.host', nodes: '2', core_node: 32, ram: '64GB', priority: '2', status: 'Queued'
+        , creation_time: '17 July 2018 14:00:00', start_time: '-', et_wt: '--- / 42:30:00'},
+      {job: '382104.host', nodes: '3', core_node: 32, ram: '32GB', priority: '2', status: 'Suspended'
+        , creation_time: '17 July 2018 14:00:00', start_time: '14:01:00', et_wt: '00:30:00/42:30:00'},
+      {job: '382105.host', nodes: '5', core_node: 32, ram: '64GB', priority: '2', status: 'Error'
+      , creation_time: '17 July 2018 14:00:00', start_time: '-', et_wt: '--- / 42:30:00'},
+      {job: '382106.host', nodes: '7', core_node: 32, ram: '32GB', priority: '2', status: 'Completed'
+      , creation_time: '17 July 2018 14:00:00', start_time: '14:01:00', et_wt: '00:30:00/42:30:00'},
+      {job: '382107.host', nodes: '2', core_node: 80, ram: '64GB', priority: '2', status: 'Hold'
+      , creation_time: '17 July 2018 14:00:00', start_time: '14:01:00', et_wt: '00:30:00/42:30:00'},
+      {job: '382108.host', nodes: '1', core_node: 32, ram: '32GB', priority: '2', status: 'Transferred'
+      , creation_time: '17 July 2018 14:00:00', start_time: '-', et_wt: '--- / 42:30:00'},
+      {job: '382109.host', nodes: '3', core_node: 32, ram: '64GB', priority: '2', status: 'Waiting'
+      , creation_time: '17 July 2018 14:00:00', start_time: '14:01:00', et_wt: '00:30:00/42:30:00'},
+      {job: '382110.host', nodes: '7', core_node: 32, ram: '32GB', priority: '2', status: 'Running'
+      , creation_time: '17 July 2018 14:00:00', start_time: '14:01:00', et_wt: '00:30:00/42:30:00'},
+      {job: '382111.host', nodes: '3', core_node: 32, ram: '64GB', priority: '2', status: 'Queued'
+      , creation_time: '17 July 2018 14:00:00', start_time: '14:01:00', et_wt: '00:30:00/42:30:00'},
+      {job: '382112.host', nodes: '4', core_node: 32, ram: '32GB', priority: '2', status: 'Suspended'
+      , creation_time: '17 July 2018 14:00:00', start_time: '-', et_wt: '--- / 42:30:00'},
+      {job: '382113.host', nodes: '2', core_node: 32, ram: '64GB', priority: '2', status: 'Error'
+      , creation_time: '17 July 2018 14:00:00', start_time: '14:01:00', et_wt: '00:30:00/42:30:00'},
+      {job: '382114.host', nodes: '1', core_node: 32, ram: '32GB', priority: '2', status: 'Completed'
+      , creation_time: '17 July 2018 14:00:00', start_time: '14:01:00', et_wt: '00:30:00/42:30:00'},
+      {job: '382115.host', nodes: '2', core_node: 32, ram: '64GB', priority: '2', status: 'Hold'
+      , creation_time: '17 July 2018 14:00:00', start_time: '14:01:00', et_wt: '00:30:00/42:30:00'},
+      {job: '382116.host', nodes: '3', core_node: 32, ram: '32GB', priority: '2', status: 'Transferred'
+      , creation_time: '17 July 2018 14:00:00', start_time: '-', et_wt: '--- / 42:30:00'},
+      {job: '382117.host', nodes: '4', core_node: 32, ram: '64GB', priority: '2', status: 'Waiting'
+      , creation_time: '17 July 2018 14:00:00', start_time: '14:01:00', et_wt: '00:30:00/42:30:00'},
+      {job: '382118.host', nodes: '2', core_node: 32, ram: '32GB', priority: '2', status: 'Running'
+      , creation_time: '17 July 2018 14:00:00', start_time: '14:01:00', et_wt: '00:30:00/42:30:00'},
+      {job: '382119.host', nodes: '5', core_node: 32, ram: '64GB', priority: '2', status: 'Queued'
+      , creation_time: '17 July 2018 14:00:00', start_time: '14:01:00', et_wt: '00:30:00/42:30:00'},
+      {job: '382120.host', nodes: '2', core_node: 32, ram: '32GB', priority: '2', status: 'Suspended'
+      , creation_time: '17 July 2018 14:00:00', start_time: '-', et_wt: '--- / 42:30:00H'},
+      {job: '382121.host', nodes: '6', core_node: 32, ram: '64GB', priority: '2', status: 'Error'
+      , creation_time: '17 July 2018 14:00:00', start_time: '14:01:23', et_wt: '00:30:00/42:30:00'},
+      {job: '382122.host', nodes: '1', core_node: 32, ram: '32GB', priority: '2', status: 'Completed'
+      , creation_time: '17 July 2018 14:00:00', start_time: '14:01:23', et_wt: '00:30:00/42:30:00'},
     ];
 
     // Assign the data to the data source for the table to render
