@@ -1,4 +1,5 @@
-import { Routes } from '@angular/router';
+import { NgModule } from '@angular/core';
+import { RouterModule, Routes } from '@angular/router';
 
 import {
   JobSettingsComponent,
@@ -32,3 +33,15 @@ export const routes: Routes = [{
     }
   ]
 }];
+
+@NgModule({
+  declarations: [],
+  imports: [
+    RouterModule.forChild(routes)
+  ],
+  exports: [
+    RouterModule
+  ],
+  providers: [PrioritiesResolver, SitesResolver, ApplicationsResolver]
+})
+export class CreateJobRoutingModule { }

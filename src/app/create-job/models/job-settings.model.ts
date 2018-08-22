@@ -115,7 +115,7 @@ export const APPLICATIONS = {
 export const PANELS = {
     BASICSETTINGS: 'Basic Settings',
     APPSPECIFICSETTINGS: 'App-Specific Settings',
-    ADDITIONALSETTINGS: 'Additional Settings'
+    ADDITIONALSETTINGS: 'Additional Settings (Optional)'
 };
 
 export const JobSettingsLabels = {

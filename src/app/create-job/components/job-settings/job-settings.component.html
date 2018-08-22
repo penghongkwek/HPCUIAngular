@@ -14,7 +14,7 @@
                     <mat-form-field>
                       <input matInput placeholder="{{jobSettingsLabels.configpath}}" formControlName="configpath">
                     </mat-form-field>
-                    <button mat-raised-button (click)="onBrowseClickHandler($event)" id="configpath_btn">Browse...</button>
+                    <button mat-raised-button (click)="onBrowseClickHandler($event)" id="configpath_btn" color="primary">Browse...</button>
                   </div>
                   <div>
                       <mat-form-field>
@@ -47,8 +47,49 @@
               </div>
             </div>
         </app-accordion-wrapper>
-        <app-accordion-wrapper [header]="panels[1]"></app-accordion-wrapper>
+        <app-accordion-wrapper [header]="panels[1]">
+          <div fxLayout fxLayout.xs="row" fxLayoutWrap fxLayoutGap="15px">
+            <div fxLayout="column" fxFlex="calc(50%-25px)" fxLayoutGap="15px">
+              <ng-container formArrayName="settings" *ngFor="let setting of appSpecificSettingsFormArray.controls; let idx=index">
+                <div [formGroupName]="idx">
+                  <app-accordion-wrapper *ngIf="isLifeScience" [header]= "getLifeScienceHeader(idx)">
+                    <mat-form-field>
+                      <mat-select placeholder="Software" formControlName="software" (change)="onSoftwareChange($event, idx)">
+                        <mat-option *ngFor="let software of softwares" [value]="software">{{software}}</mat-option>
+                      </mat-select>
+                    </mat-form-field>
+                    <app-app-specific-form [appSpecificFormGroup]="setting" [appSpecificSettings]="appSpecificSettings"></app-app-specific-form>
+                 </app-accordion-wrapper>
+                 <app-app-specific-form *ngIf="!isLifeScience" [appSpecificFormGroup]="setting" [appSpecificSettings]="appSpecificSettings"></app-app-specific-form> 
+               </div>  
+              </ng-container> 
+            </div>
+          </div>
+        </app-accordion-wrapper>
+        <app-accordion-wrapper [header]="panels[2]">
+          <div fxLayout fxLayout.xs="row" fxLayoutWrap fxLayoutGap="15px">
+            <div fxLayout="column" fxFlex="calc(50%-25px)" fxLayoutGap="15px">
+              <div>
+                  <mat-form-field>
+                    <input matInput placeholder="{{jobSettingsLabels.outputfile}}" formControlName="outputfile">
+                  </mat-form-field>
+              </div>
+              <div>
+                  <mat-form-field>
+                    <input matInput placeholder="{{jobSettingsLabels.errorfile}}" formControlName="errorfile">
+                  </mat-form-field>
+              </div>
+              <div>
+                  <mat-form-field>
+                    <textarea matInput matTextareaAutosize matAutosizeMinRows="8" placeholder="{{jobSettingsLabels.customscript}}" formControlName="customscript"></textarea>
+                  </mat-form-field>
+              </div>
+            </div>
+          </div>
+        </app-accordion-wrapper>
       </mat-accordion>
     </mat-card-content>
   </mat-card>
 </form>
+
+ {{jobSettingsForm.value | json}} 
