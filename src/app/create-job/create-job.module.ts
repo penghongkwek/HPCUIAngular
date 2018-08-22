@@ -1,21 +1,25 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { MaterialModule } from '../material-module';
-import { CreateJobRoutingModule } from './create-job.routing';
-import { SharedModule } from './../shared/shared.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-import { CreateJobComponent } from './pages/create-job.component';
+import { SharedModule } from './../shared/shared.module';
 
+import { MaterialModule } from '../material-module';
+import { CreateJobRoutingModule } from './create-job.routing';
 import { CreateJobDataService } from './pages/create-job.dataservice';
-
-import { AppSpecificFormComponent } from './components/job-settings/app-specific-form/app-specific-form.component';
+import { RecommendationsService } from './components/recommendations/recommendations.service';
 
 import {
   JobSettingsComponent,
   RecommendationsComponent
 } from './components/index';
+
+import { CreateJobComponent } from './pages/create-job.component';
+
+import { AppSpecificFormComponent } from './components/job-settings/app-specific-form/app-specific-form.component';
+
+
 
 @NgModule({
   imports: [
@@ -40,7 +44,8 @@ import {
     AppSpecificFormComponent
   ],
   providers: [
-    CreateJobDataService
+    CreateJobDataService,
+    RecommendationsService
   ]
 })
 
