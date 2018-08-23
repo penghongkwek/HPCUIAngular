@@ -46,10 +46,10 @@
     font-weight: 100;
 }
 .pricing .price span.period {
-    margin-left: -10px;
+    margin-left: -5px;
 }
 .pricing .price span.currency {
-    letter-spacing: -6px;
+    letter-spacing: -2px;
     top: -20px;
 }
 .pricing .price span.currency, .pricing .price span.period {

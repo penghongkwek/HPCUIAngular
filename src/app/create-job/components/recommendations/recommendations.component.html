@@ -1,170 +1,101 @@
-<!-- <form [formGroup]="recommendationForm" (ngSubmit)="onNext()" novalidate>
-    <mat-card>
-        <mat-card-content>
-            <div formArrayName="recommendations" *ngFor="let rec of recommendationFormArray.controls;let idx=index">
-                    <div class="choice-highlight">
-                        <h3>{{recommendationCards[idx].title}}</h3>
-                        <mat-card-subtitle>{{recommendationCards[idx].subtitle}}</mat-card-subtitle>
-                    </div> 
-            </div>
-        </mat-card-content>
-    </mat-card>
-</form> -->
-        <!-- START PRICING TABLE CONTAINER -->
-        <div class="container">
 
-                <!-- START PRICING TABLE ROW -->
-                <div class="row">
-    
-                    <!-- MATERIALIZE CSS USES 12 COLUMN GRID SYSTEM, DETAILS http://materializecss.com/grid.html -->
-                    <div class="col s12 m4">
-                        
-                        <!-- START PRICING PLAN -->
+<form [formGroup]="recommendationForm" (ngSubmit)="onNext()" novalidate  fxLayout="row" fxFlex="calc(100%)" fxLayoutGap="35px" fxLayoutAlign="center center">
+    <div formArrayName="recommendations" *ngFor="let rec of recommendationFormArray.controls;let idx=index">
+        <app-card-wrapper formGroupName ="{{idx}}">
+            <div card-content>
+                <div class="col s12 m4">
+                    <div *ngIf="recommendationCards[idx].title != 'Best Value';else other_content">
                         <div class="card pricing style-2">
-                            
                             <!-- START PLAN TITLE DIV. -->
-                            <!-- CHANGE COLOR BY CHANGING LAST CSS CLASS (teal) AVAILABLE COLOR CLASSES LISTED HERE http://materializecss.com/color.html -->
                             <div class="plan-title waves-effect waves-block waves-light teal">
                                 <h5 class="white-text">
-                                    <span class="plan">BASIC</span>
+                                    <span class="plan">{{recommendationCards[idx].title}}</span>
                                 </h5>
                             </div>
                             <!-- END PLAN TITLE DIV. -->
                             
-                            <!-- START PRICE INFO DIV. -->
+                            <!-- START INFO DIV. -->
                             <div class="price waves-effect waves-block waves-light teal lighten-1">
                                 <h4 class="white-text">
                                     <span class="currency">$</span>
-                                    <span class="amount">49</span>
-                                    <span class="period">/mo</span>
+                                    <span class="amount">{{recommendationCards[idx].price}}</span>
+                                    <!-- <span class="period">/mo</span> -->
                                 </h4>
                             </div>
-                            <!-- END PRICE INFO DIV. -->
+                            <!-- END INFO DIV. -->
                             
                             <div class="card-content">
                                 
                                 <!-- START FEATURE LIST -->
                                 <ul class="collection">
-                                    
-                                    <!-- USE FOLLOWING LIST ITEM AS EXAMPLE TO ADD TOOLTIP IN FEATURE -->
-                                    <li data-tooltip="Dedicated support team available 24/7" data-delay="10" data-position="top" class="collection-item tooltipped"><b>24/7</b> Support <i class="mdi-action-info-outline right"></i></li>
-                                    <li class="collection-item"><b>1TB</b> Bandwidth</li>
-                                    <li data-tooltip="On demand increase anytime with extra fee" data-delay="10" data-position="top" class="collection-item tooltipped"><b>10GB</b> Hosting Space <i class="mdi-action-info-outline right"></i></li>
-                                    <li class="collection-item"><b>1GB</b> Memory</li>              
-                                    <li class="collection-item"><b>10</b> Free Domain</li>
-                                    <li class="collection-item">User Analytics</li>             
+                                    <li class="collection-item"><b>Waiting Time </b> : {{recommendationCards[idx].waitingtime}}</li>
+                                    <li class="collection-item"><b>Wall Time </b> : {{recommendationCards[idx].walltime}}</li>
+                                    <li class="collection-item"><b>Nodes </b> : {{recommendationCards[idx].chunk}}</li>  
+                                    <li class="collection-item"><b>Cores / Node</b> : {{recommendationCards[idx].ncpu}}</li>
+                                    <li class="collection-item"><b>RAM</b> : {{recommendationCards[idx].mem}}</li>  
+                                    <li class="collection-item"><b>GPU</b> : {{recommendationCards[idx].gpu}}</li>  
+                                    <li class="collection-item"><b>Clock Speed</b> : {{recommendationCards[idx].clockspeed}}</li>  
+                                    <li class="collection-item"><b>Cluster</b> : {{recommendationCards[idx].cluster}}</li>             
                                 </ul>
                                 <!-- END FEATURE LIST -->
                                 
-                                <!-- START SIGN UP BUTTON -->
+                                <!-- START SELECT BUTTON -->
                                 <div class="plan-signup-btn">
-                                    <a id="start-now-starter" class="btn waves-effect waves-block waves-light no-margin white-text" href="#">Sign Up</a>
+                                    <a id="start-now-starter" class="btn waves-effect waves-block waves-light no-margin white-text" href="#">
+                                        SELECT
+                                    </a>
                                 </div>
-                                <!-- END SIGN UP BUTTON -->
-                                
+                                <!-- END SELECT BUTTON --> 
                             </div>
                         </div>
-                        <!-- END PRICING PLAN -->
-                        
                     </div>
-    
-                    <!-- FEATURED PLAN ( USE EXTRA CLASS z-depth-4 TO RAISE FEATURED PLAN )-->
-                    <div class="col s12 m4">
-                        
-                        <!-- START PRICING PLAN -->
+                    <ng-template #other_content>
                         <div class="card pricing style-2 z-depth-4">
-                            
                             <!-- START PLAN TITLE DIV. -->
                             <div class="plan-title waves-effect waves-block waves-light yellow darken-3">
                                 <h5 class="dark-grey-text">
-                                    <span class="plan">POPULAR</span>
+                                    <span class="plan">{{recommendationCards[idx].title}}</span>
                                 </h5>
                             </div>
                             <!-- END PLAN TITLE DIV. -->
                             
-                            <!-- START PRICE INFO DIV. -->
+                            <!-- START INFO DIV. -->
                             <div class="price waves-effect waves-block waves-light yellow darken-2">
                                 <h4 class="dark-grey-text">
                                     <span class="currency">$</span>
-                                    <span class="amount">99</span>
-                                    <span class="period">/mo</span>
+                                    <span class="amount">{{recommendationCards[idx].price}}</span>
+                                    <!-- <span class="period">/mo</span> -->
                                 </h4>
                             </div>
-                            <!-- END PRICE INFO DIV. -->
+                            <!-- END INFO DIV. -->
                             
                             <div class="card-content">
                                 
                                 <!-- START FEATURE LIST -->
                                 <ul class="collection">
-                                    <li data-tooltip="Dedicated support team available 24/7" data-delay="10" data-position="top" class="collection-item tooltipped"><b>24/7</b> Support <i class="mdi-action-info-outline right"></i></li>
-                                    <li class="collection-item"><b>3TB</b> Bandwidth</li>
-                                    <li data-tooltip="On demand increase anytime with extra fee" data-delay="10" data-position="top" class="collection-item tooltipped"><b>50GB</b> Hosting Space <i class="mdi-action-info-outline right"></i></li>
-                                    <li class="collection-item"><b>8GB</b> Memory</li>
-                                    <li class="collection-item"><b>50</b> Free Domain</li>
-                                    <li class="collection-item">User Analytics</li>
+                                    <li class="collection-item"><b>Waiting Time </b> : {{recommendationCards[idx].waitingtime}}</li>
+                                    <li class="collection-item"><b>Wall Time </b> : {{recommendationCards[idx].walltime}}</li>
+                                    <li class="collection-item"><b>Nodes </b> : {{recommendationCards[idx].chunk}}</li>  
+                                    <li class="collection-item"><b>Cores / Node</b> : {{recommendationCards[idx].ncpu}}</li>
+                                    <li class="collection-item"><b>RAM</b> : {{recommendationCards[idx].mem}}</li>  
+                                    <li class="collection-item"><b>GPU</b> : {{recommendationCards[idx].gpu}}</li>  
+                                    <li class="collection-item"><b>Clock Speed</b> : {{recommendationCards[idx].clockspeed}}</li>  
+                                    <li class="collection-item"><b>Cluster</b> : {{recommendationCards[idx].cluster}}</li>             
                                 </ul>
                                 <!-- END FEATURE LIST -->
                                 
-                                <!-- START SIGN UP BUTTON -->
+                                <!-- START SELECT BUTTON -->
                                 <div class="plan-signup-btn">
-                                    <a id="start-now-plus" class="btn-large waves-effect waves-block waves-light no-margin white-text yellow darken-2" href="#"><span class="dark-grey-text">Sign Up</span></a>
+                                    <a id="start-now-plus" class="btn-large waves-effect waves-block waves-light no-margin white-text yellow darken-2" (click)="onSelectHandler(idx)" [id]="'select-button-'+ idx">
+                                        <span class="dark-grey-text">SELECT</span>
+                                    </a>
                                 </div>
-                                <!-- END SIGN UP BUTTON -->
-                                
+                                <!-- END SELECT BUTTON --> 
                             </div>
                         </div>
-                        <!-- END PRICING PLAN -->
-                        
-                    </div>
-                    <div class="col s12 m4">
-                        
-                        <!-- START PRICING PLAN -->
-                        <div class="card pricing style-2">
-                            
-                            <!-- START PLAN TITLE DIV. -->
-                            <div class="plan-title waves-effect waves-block waves-light teal">
-                                <h5 class="white-text">
-                                    <span class="plan">PREMIUM</span>
-                                </h5>
-                            </div>
-                            <!-- END PLAN TITLE DIV. -->
-                            
-                            <!-- START PRICE INFO DIV. -->
-                            <div class="price waves-effect waves-block waves-light teal lighten-1">
-                                <h4 class="white-text">
-                                    <span class="currency">$</span>
-                                    <span class="amount">199</span>
-                                    <span class="period">/mo</span>
-                                </h4>
-                            </div>
-                            <!-- END PRICE INFO DIV. -->
-                            
-                            <div class="card-content">
-                                
-                                <!-- START FEATURE LIST -->
-                                <ul class="collection">
-                                    <li data-tooltip="Dedicated support team available 24/7" data-delay="10" data-position="top" class="collection-item tooltipped"><b>24/7</b> Support<i class="mdi-action-info-outline right"></i></li>
-                                    <li class="collection-item"> <b>5TB</b> Bandwidth</li>
-                                    <li data-tooltip="On demand increase anytime with extra fee" data-delay="10" data-position="top" class="collection-item tooltipped"><b>100GB</b> Hosting Space <i class="mdi-action-info-outline right"></i></li>
-                                    <li class="collection-item"><b>16GB</b> Memory</li>
-                                    <li class="collection-item"><b>100</b> Free Domain</li>
-                                    <li class="collection-item">User Analytics</li>
-                                </ul>
-                                <!-- END FEATURE LIST -->
-                                
-                                <!-- START SIGN UP BUTTON -->
-                                <div class="plan-signup-btn">
-                                    <a id="start-now-premium" class="btn waves-effect waves-block waves-light no-margin white-text" href="">Sign Up</a>
-                                </div>
-                                <!-- END SIGN UP BUTTON -->
-                                
-                            </div>
-                        </div>
-                        <!-- END PRICING PLAN -->
-                        
-                    </div>
+                    </ng-template>
                 </div>
-                <!-- END PRICING TABLE ROW -->
-                
-            </div>	
-            <!-- END PRICING TABLE CONTAINER -->
+            </div>
+        </app-card-wrapper>
+    </div>
+</form>

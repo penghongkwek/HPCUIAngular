@@ -49,7 +49,7 @@
         </app-accordion-wrapper>
         <app-accordion-wrapper [header]="panels[1]">
           <div fxLayout fxLayout.xs="row" fxLayoutWrap fxLayoutGap="15px">
-            <div fxLayout="column" fxFlex="calc(50%-25px)" fxLayoutGap="15px">
+            <div fxLayout="column" fxFlex="calc(50%-25px)" fxLayoutGap="15px" formGroupName="app">
               <ng-container formArrayName="settings" *ngFor="let setting of appSpecificSettingsFormArray.controls; let idx=index">
                 <div [formGroupName]="idx">
                   <app-accordion-wrapper *ngIf="isLifeScience" [header]= "getLifeScienceHeader(idx)">
@@ -89,7 +89,14 @@
         </app-accordion-wrapper>
       </mat-accordion>
     </mat-card-content>
+
+    <div fxLayout fxLayout.xs="row" style="float:right;">
+      <a mat-raised-button color="warn" (click)="onNext()" id="next-button">NEXT</a>
+    </div>
+    
   </mat-card>
 </form>
 
- {{jobSettingsForm.value | json}} 
+
+
+ <!-- {{jobSettingsForm.value | json}}  -->

@@ -5,7 +5,7 @@ import { FormArray, FormGroup, FormControl, FormBuilder } from '@angular/forms';
 import { AbstractFormComponent } from '../abstract-form-component';
 
 import { AccordionHeaderModel } from '../../../shared/public_api';
-import { Recommendation } from '../../models/index';
+import { Recommendation } from '../../models/recommendation.model';
 
 import { FakeBackendService } from '../../../core/public_api';
 import { CreateJobDataService } from '../../pages/create-job.dataservice';

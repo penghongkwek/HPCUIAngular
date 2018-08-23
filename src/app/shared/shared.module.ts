@@ -4,7 +4,7 @@ import { RouterModule } from '@angular/router';
 import { MaterialModule } from '../material-module';
 import { MenuItems } from './menu-items/menu-items';
 import { AccordionAnchorDirective, AccordionLinkDirective, AccordionDirective } from './accordion';
-import { SmartTableComponent, StepsNavWrapperComponent, AccordionWrapperComponent } from './index';
+import { SmartTableComponent, StepsNavWrapperComponent, AccordionWrapperComponent, CardWrapperComponent } from './index';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
@@ -21,7 +21,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     AccordionDirective,
     SmartTableComponent,
     StepsNavWrapperComponent,
-    AccordionWrapperComponent
+    AccordionWrapperComponent,
+    CardWrapperComponent
   ],
   exports: [
     AccordionAnchorDirective,
@@ -29,7 +30,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     AccordionDirective,
     SmartTableComponent,
     StepsNavWrapperComponent,
-    AccordionWrapperComponent
+    AccordionWrapperComponent,
+    CardWrapperComponent
    ],
   providers: [ MenuItems ]
 })
