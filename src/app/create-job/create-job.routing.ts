@@ -3,7 +3,8 @@ import { RouterModule, Routes } from '@angular/router';
 
 import {
   JobSettingsComponent,
-  RecommendationsComponent
+  RecommendationsComponent,
+  ConfirmationComponent
 } from './components/index';
 
 import { CreateJobComponent } from './pages/create-job.component';
@@ -30,6 +31,10 @@ export const routes: Routes = [{
     {
       path: 'recommendations',
       component: RecommendationsComponent
+    },
+    {
+      path: 'confirmation',
+      component: ConfirmationComponent
     }
   ]
 }];

@@ -109,6 +109,8 @@ export class RecommendationsComponent extends AbstractFormComponent implements O
   onSelectHandler(idx: number) {
     const formValue = {...this.recommendationForm.value.recommendations[idx], queuename: this.queuename, metaid: ''};
     this._createJobDS.setResourceSettings(formValue);
+
+    this.onNext();
   }
 
   onNext() {
