@@ -1,6 +1,7 @@
 import { Routes } from '@angular/router';
 
 import { FullComponent } from './layouts/full/full.component';
+import { BreadcrumbsModel } from './shared/public_api';
 
 export const AppRoutes: Routes = [{
   path: '',
@@ -10,29 +11,45 @@ export const AppRoutes: Routes = [{
     redirectTo: '/dashboard',
     pathMatch: 'full'
   }, {
-    path: '',
-    loadChildren: './workspace/workspace.module#WorkspaceModule'
-  }, {
-    path: '',
-    loadChildren: './user-account/user-account.module#UserAccountModule'
-  }, {
-    path: '',
-    loadChildren: './jobs/jobs.module#JobsModule'
-  }, {
     path: 'dashboard',
-    loadChildren: './dashboard/dashboard.module#DashboardModule'
+    loadChildren: './dashboard/dashboard.module#DashboardModule',
+    data: {
+      breadcrumbs: [
+        new BreadcrumbsModel('Dashboard', '/dashboard')
+      ]
+    }
   }, {
-    path: 'createjob',
-    loadChildren: './create-job/create-job.module#CreateJobModule'
+    path: 'createjob/:name',
+    loadChildren: './create-job/create-job.module#CreateJobModule',
+    data: {
+      breadcrumbs: [
+        new BreadcrumbsModel('Create_Job', '/jobs')
+      ]
+    }
   }, {
     path: 'jobs',
-    loadChildren: './jobs/jobs.module#JobsModule'
+    loadChildren: './jobs/jobs.module#JobsModule',
+    data: {
+      breadcrumbs: [
+        new BreadcrumbsModel('Jobs', '/jobs')
+      ]
+    }
   }, {
     path: 'workspace',
-    loadChildren: './workspace/workspace.module#WorkspaceModule'
+    loadChildren: './workspace/workspace.module#WorkspaceModule',
+    data: {
+      breadcrumbs: [
+        new BreadcrumbsModel('Workspace', '/workspace')
+      ]
+    }
   }, {
     path: 'user',
-    loadChildren: './user-account/user-account.module#UserAccountModule'
+    loadChildren: './user-account/user-account.module#UserAccountModule',
+    data: {
+      breadcrumbs: [
+        new BreadcrumbsModel('User', '/user')
+      ]
+    }
   }]
 }];
 

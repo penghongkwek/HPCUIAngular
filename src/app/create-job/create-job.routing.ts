@@ -10,33 +10,45 @@ import {
 import { CreateJobComponent } from './pages/create-job.component';
 import { PrioritiesResolver, SitesResolver, ApplicationsResolver } from './components/job-settings/job-settings-resolver.service';
 
+import { BreadcrumbsModel } from '../shared/public_api';
+
+import { BreadcrumbProvider } from '../providers/breadcrumb.providers';
 
 export const routes: Routes = [{
-  path: '',
-  component: CreateJobComponent,
-  children: [
-    {
-      path: '',
-      redirectTo: 'settings'
-    },
-    {
-      path: 'settings',
-      component: JobSettingsComponent,
-      resolve: {
-        priorities: PrioritiesResolver,
-        sites: SitesResolver,
-        apps: ApplicationsResolver
-      }
-    },
-    {
-      path: 'recommendations',
-      component: RecommendationsComponent
-    },
-    {
-      path: 'confirmation',
-      component: ConfirmationComponent
-    }
-  ]
+  // path: '',
+  // component: CreateJobComponent,
+  // children: [
+  //   {
+  //     path: '',
+  //     redirectTo: 'CreateJob'
+  //   },
+  //   {
+  //     path: 'CreateJob',
+  //     component: CreateJobComponent
+  //   },
+  //   {
+  //     path: 'settings',
+  //     component: JobSettingsComponent,
+  //     resolve: {
+  //       priorities: PrioritiesResolver,
+  //       sites: SitesResolver,
+  //       apps: ApplicationsResolver
+  //     },
+  //     data: {
+  //       breadcrumbs: [
+  //         new BreadcrumbsModel('Job Settings', '/createjob/settings')
+  //       ]
+  //     }
+  //   },
+  //   {
+  //     path: 'recommendations',
+  //     component: RecommendationsComponent
+  //   },
+  //   {
+  //     path: 'confirmation',
+  //     component: ConfirmationComponent
+  //   }
+  // ]
 }];
 
 @NgModule({
@@ -47,6 +59,11 @@ export const routes: Routes = [{
   exports: [
     RouterModule
   ],
-  providers: [PrioritiesResolver, SitesResolver, ApplicationsResolver]
+  providers: [
+    PrioritiesResolver,
+    SitesResolver,
+    ApplicationsResolver,
+    BreadcrumbProvider
+  ]
 })
 export class CreateJobRoutingModule { }

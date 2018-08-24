@@ -34,12 +34,15 @@ import {
 import { CreateJobDataService } from '../../pages/create-job.dataservice';
 import { AuthService } from '../../../core/services/auth.service';
 
+import { BreadcrumbProvider } from '../../../providers/breadcrumb.providers';
+import { JobSettingsProvider } from '../../../providers/jobsettings.providers';
+
 @Component({
   selector: 'app-job-settings',
   templateUrl: './job-settings.component.html',
   styleUrls: ['./job-settings.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: []
+  providers: [ JobSettingsProvider ]
 })
 export class JobSettingsComponent extends AbstractFormComponent implements OnInit {
 
@@ -64,6 +67,8 @@ export class JobSettingsComponent extends AbstractFormComponent implements OnIni
     private _createJobDS: CreateJobDataService,
     private _authService: AuthService,
     private _router: Router,
+    private breadcrumbProvider: BreadcrumbProvider,
+    private jobsettingsProvider: JobSettingsProvider,
     private _route: ActivatedRoute
   ) {
     super();
@@ -105,6 +110,10 @@ export class JobSettingsComponent extends AbstractFormComponent implements OnIni
   }
 
   ngOnInit() {
+
+    this.jobsettingsProvider.getNameByUrl(this._route.snapshot.params.name)
+      .then(name => this.breadcrumbProvider.addItem(name));
+
     this.jobSettings = this._createJobDS.getJobSettings();
 
     this.jobSettingsForm = this.createForm(this.jobSettings);

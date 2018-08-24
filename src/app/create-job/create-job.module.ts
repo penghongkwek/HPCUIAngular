@@ -20,8 +20,6 @@ import { CreateJobComponent } from './pages/create-job.component';
 
 import { AppSpecificFormComponent } from './components/job-settings/app-specific-form/app-specific-form.component';
 
-
-
 @NgModule({
   imports: [
     CommonModule,

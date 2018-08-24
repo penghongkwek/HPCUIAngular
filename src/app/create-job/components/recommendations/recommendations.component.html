@@ -1,5 +1,5 @@
 
-<form [formGroup]="recommendationForm"  fxLayout="row" fxFlex="calc(100%)" fxLayoutGap="100px" fxLayoutAlign="center center">
+<form [formGroup]="recommendationForm" (ngSubmit)="onNext()"  fxLayout="row" fxFlex="calc(100%)" fxLayoutGap="100px" fxLayoutAlign="center center">
     <div formArrayName="recommendations" *ngFor="let rec of recommendationFormArray.controls;let idx=index">
         <app-card-wrapper formGroupName ="{{idx}}">
             <div card-content>
@@ -41,9 +41,11 @@
                                 
                                 <!-- START SELECT BUTTON -->
                                 <div class="plan-signup-btn">
-                                    <a id="start-now-starter" class="btn waves-effect waves-block waves-light no-margin white-text" href="#">
-                                        SELECT
-                                    </a>
+                                    <button (click)="onSelectHandler(idx)" [id]="'select-button-'+ idx" 
+                                    class="btn waves-effect waves-block waves-light no-margin white-text"
+                                    style="width: 100%;">
+                                            <span class="dark-grey-text">SELECT</span>
+                                    </button>
                                 </div>
                                 <!-- END SELECT BUTTON --> 
                             </div>
@@ -86,10 +88,11 @@
                                 
                                 <!-- START SELECT BUTTON -->
                                 <div class="plan-signup-btn">
-                                    <a (click)="onSelectHandler(idx)" [id]="'select-button-'+ idx" id="start-now-plus" class="btn-large waves-effect waves-block waves-light no-margin white-text yellow darken-2">
-                                        <span class="dark-grey-text">SELECT</span>
-                                    </a>
-                                    <!-- <a mat-raised-button color="warn" (click)="onNext()" id="next-button">NEXT</a> -->
+                                    <button (click)="onSelectHandler(idx)" [id]="'select-button-'+ idx" 
+                                    class="btn-large waves-effect waves-block waves-light no-margin white-text yellow darken-2"
+                                    style="width: 100%;">
+                                            <span class="dark-grey-text">SELECT</span>
+                                    </button>
                                 </div>
                                 
                                 <!-- END SELECT BUTTON --> 

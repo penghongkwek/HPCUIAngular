@@ -1,3 +1,5 @@
+import { JobSettings } from './create-job/models/job-settings.model';
+import { CreateJobComponent } from './create-job/pages/create-job.component';
 import * as $ from 'jquery';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -19,13 +21,15 @@ import { CoreModule } from './core/core.module';
 import { SharedModule } from './shared/shared.module';
 import { SpinnerComponent } from './shared/spinner.component';
 
+import { BreadcrumbProvider } from './providers/breadcrumb.providers';
+
 @NgModule({
   declarations: [
     AppComponent,
     FullComponent,
     AppHeaderComponent,
     SpinnerComponent,
-    AppSidebarComponent
+    AppSidebarComponent,
   ],
   imports: [
     BrowserModule,
@@ -39,10 +43,11 @@ import { SpinnerComponent } from './shared/spinner.component';
     RouterModule.forRoot(AppRoutes)
   ],
   providers: [
-  {
-    provide: LocationStrategy,
-    useClass: HashLocationStrategy
-  }
+    BreadcrumbProvider,
+    {
+      provide: LocationStrategy,
+      useClass: HashLocationStrategy
+    }
   ],
   bootstrap: [AppComponent]
 })

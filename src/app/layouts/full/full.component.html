@@ -20,9 +20,10 @@
             <app-sidebar></app-sidebar>
         </mat-sidenav>
         <mat-sidenav-content class="page-wrapper">
-                <div class="page-content">
-                    <router-outlet><app-spinner></app-spinner></router-outlet>
-                </div>
+            <app-breadcrumbs></app-breadcrumbs>
+            <div class="page-content">
+                <router-outlet><app-spinner></app-spinner></router-outlet>
+            </div>
         </mat-sidenav-content>
     </mat-sidenav-container>
 </div>

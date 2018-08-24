@@ -1,0 +1,7 @@
+<ul id="breadcrumb">
+    <li><a href="#"><mat-icon class="icon">home</mat-icon></a></li>
+    <ng-container  *ngFor="let b of breadcrumbs; let last = last">
+        <li><a [routerLink]="b.href"><mat-icon class="icon">chevron_right</mat-icon> {{ b.label }}</a></li>
+    </ng-container >
+</ul>
+      
