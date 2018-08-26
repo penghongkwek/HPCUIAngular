@@ -1,55 +1,49 @@
-import { Routes } from '@angular/router';
+import { NgModule } from '@angular/core';
+import { Routes, RouterModule } from '@angular/router';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { FullComponent } from './layouts/full/full.component';
-import { BreadcrumbsModel } from './shared/public_api';
 
-export const AppRoutes: Routes = [{
-  path: '',
-  component: FullComponent,
-  children: [{
-    path: '',
-    redirectTo: '/dashboard',
-    pathMatch: 'full'
-  }, {
-    path: 'dashboard',
-    loadChildren: './dashboard/dashboard.module#DashboardModule',
-    data: {
-      breadcrumbs: [
-        new BreadcrumbsModel('Dashboard', '/dashboard')
+export const Approutes: Routes = [
+  {
+      path: '',
+      component: FullComponent,
+      children: [
+          { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
+          { path: 'dashboard', loadChildren: './dashboard/dashboard.module#DashboardModule' },
+          { path: 'createjob', loadChildren: './create-job/create-job.module#CreateJobModule' },
+          { path: 'jobs', loadChildren: './jobs/jobs.module#JobsModule' },
+          { path: 'workspace', loadChildren: './workspace/workspace.module#WorkspaceModule' },
+          { path: 'user', loadChildren: './user-account/user-account.module#UserAccountModule' },
       ]
-    }
-  }, {
-    path: 'createjob/:name',
-    loadChildren: './create-job/create-job.module#CreateJobModule',
-    data: {
-      breadcrumbs: [
-        new BreadcrumbsModel('Create_Job', '/jobs')
-      ]
-    }
-  }, {
-    path: 'jobs',
-    loadChildren: './jobs/jobs.module#JobsModule',
-    data: {
-      breadcrumbs: [
-        new BreadcrumbsModel('Jobs', '/jobs')
-      ]
-    }
-  }, {
-    path: 'workspace',
-    loadChildren: './workspace/workspace.module#WorkspaceModule',
-    data: {
-      breadcrumbs: [
-        new BreadcrumbsModel('Workspace', '/workspace')
-      ]
-    }
-  }, {
-    path: 'user',
-    loadChildren: './user-account/user-account.module#UserAccountModule',
-    data: {
-      breadcrumbs: [
-        new BreadcrumbsModel('User', '/user')
-      ]
-    }
-  }]
-}];
+  },
+  {
+      path: '**',
+      redirectTo: '/starter'
+  }];
+
+// export const AppRoutes: Routes = [{
+//   path: '',
+//   component: FullComponent,
+//   children: [{
+//     path: '',
+//     redirectTo: '/dashboard',
+//     pathMatch: 'full'
+//   }, {
+//     path: 'dashboard',
+//     loadChildren: './dashboard/dashboard.module#DashboardModule'
+//   }, {
+//     path: 'createjob/:name',
+//     loadChildren: './create-job/create-job.module#CreateJobModule'
+//   }, {
+//     path: 'jobs',
+//     loadChildren: './jobs/jobs.module#JobsModule'
+//   }, {
+//     path: 'workspace',
+//     loadChildren: './workspace/workspace.module#WorkspaceModule'
+//   }, {
+//     path: 'user',
+//     loadChildren: './user-account/user-account.module#UserAccountModule'
+//   }]
+// }];
 

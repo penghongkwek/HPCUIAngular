@@ -10,7 +10,7 @@ import {
   StepsNavWrapperComponent,
   AccordionWrapperComponent,
   CardWrapperComponent,
-  BreadcrumbsComponent
+  BreadcrumbComponent
 } from './index';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -31,7 +31,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     StepsNavWrapperComponent,
     AccordionWrapperComponent,
     CardWrapperComponent,
-    BreadcrumbsComponent
+    BreadcrumbComponent
   ],
   exports: [
     AccordionAnchorDirective,
@@ -41,7 +41,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     StepsNavWrapperComponent,
     AccordionWrapperComponent,
     CardWrapperComponent,
-    BreadcrumbsComponent
+    BreadcrumbComponent
    ],
   providers: [ MenuItems ]
 })

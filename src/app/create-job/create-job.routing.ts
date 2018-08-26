@@ -10,46 +10,55 @@ import {
 import { CreateJobComponent } from './pages/create-job.component';
 import { PrioritiesResolver, SitesResolver, ApplicationsResolver } from './components/job-settings/job-settings-resolver.service';
 
-import { BreadcrumbsModel } from '../shared/public_api';
+export const routes: Routes = [
+  {
+    path: '',
+    children: [
+    {
+      path: 'jobsettings',
+      component: JobSettingsComponent,
+      resolve: {
+        priorities: PrioritiesResolver,
+        sites: SitesResolver,
+        apps: ApplicationsResolver
+      },
+      data: {
+        title: '',
+        urls: [{title: 'Home', url: '/dashboard'},
+        {title: 'Jobs', url: '/jobs'},
+        {title: 'New Jobs'}]
+      }
+    }]
+  }
+];
 
-import { BreadcrumbProvider } from '../providers/breadcrumb.providers';
-
-export const routes: Routes = [{
-  // path: '',
-  // component: CreateJobComponent,
-  // children: [
-  //   {
-  //     path: '',
-  //     redirectTo: 'CreateJob'
-  //   },
-  //   {
-  //     path: 'CreateJob',
-  //     component: CreateJobComponent
-  //   },
-  //   {
-  //     path: 'settings',
-  //     component: JobSettingsComponent,
-  //     resolve: {
-  //       priorities: PrioritiesResolver,
-  //       sites: SitesResolver,
-  //       apps: ApplicationsResolver
-  //     },
-  //     data: {
-  //       breadcrumbs: [
-  //         new BreadcrumbsModel('Job Settings', '/createjob/settings')
-  //       ]
-  //     }
-  //   },
-  //   {
-  //     path: 'recommendations',
-  //     component: RecommendationsComponent
-  //   },
-  //   {
-  //     path: 'confirmation',
-  //     component: ConfirmationComponent
-  //   }
-  // ]
-}];
+// export const routes: Routes = [{
+//   path: '',
+//   component: CreateJobComponent,
+//   children: [
+//     {
+//       path: '',
+//       component: JobSettingsComponent
+//     },
+//     {
+//       path: 'jobsettings',
+//       component: JobSettingsComponent,
+//       resolve: {
+//         priorities: PrioritiesResolver,
+//         sites: SitesResolver,
+//         apps: ApplicationsResolver
+//       }
+//     },
+//     {
+//       path: 'recommendations',
+//       component: RecommendationsComponent
+//     },
+//     {
+//       path: 'confirmation',
+//       component: ConfirmationComponent
+//     }
+//   ]
+// }];
 
 @NgModule({
   declarations: [],
@@ -62,8 +71,7 @@ export const routes: Routes = [{
   providers: [
     PrioritiesResolver,
     SitesResolver,
-    ApplicationsResolver,
-    BreadcrumbProvider
+    ApplicationsResolver
   ]
 })
 export class CreateJobRoutingModule { }

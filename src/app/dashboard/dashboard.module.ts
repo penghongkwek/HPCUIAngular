@@ -1,20 +1,30 @@
 import { NgModule } from '@angular/core';
-import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
-import { FlexLayoutModule } from '@angular/flex-layout';
+import { FormsModule } from '@angular/forms';
+import { Routes, RouterModule } from '@angular/router';
 import { MaterialModule } from '../material-module';
-import { DashboardComponent } from './dashboard.component';
-import { StarterRoutes } from './dashboard.routing';
 import { SharedModule } from './../shared/shared.module';
 
+import { DashboardComponent } from './pages/dashboard.component';
+
+const routes: Routes = [{
+  path: '',
+  data: {
+        title: '',
+        urls: [{title: 'Home', url: '/index'},
+        {title: 'Dashboard'}]
+    },
+  component: DashboardComponent
+}];
+
 @NgModule({
-  imports: [
-    CommonModule,
-    FlexLayoutModule,
-    MaterialModule,
-    SharedModule,
-    RouterModule.forChild(StarterRoutes)
-  ],
+imports: [
+  FormsModule,
+  CommonModule,
+  MaterialModule,
+  SharedModule,
+  RouterModule.forChild(routes)
+    ],
   declarations: [ DashboardComponent ]
 })
 
