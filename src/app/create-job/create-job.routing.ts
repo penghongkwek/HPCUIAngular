@@ -4,7 +4,8 @@ import { RouterModule, Routes } from '@angular/router';
 import {
   JobSettingsComponent,
   RecommendationsComponent,
-  ConfirmationComponent
+  ConfirmationComponent,
+  SubmissionComponent
 } from './components/index';
 
 import { CreateJobComponent } from './pages/create-job.component';
@@ -13,9 +14,10 @@ import { PrioritiesResolver, SitesResolver, ApplicationsResolver } from './compo
 export const routes: Routes = [
   {
     path: '',
+    component: CreateJobComponent,
     children: [
     {
-      path: 'jobsettings',
+      path: 'settings',
       component: JobSettingsComponent,
       resolve: {
         priorities: PrioritiesResolver,
@@ -28,37 +30,39 @@ export const routes: Routes = [
         {title: 'Jobs', url: '/jobs'},
         {title: 'New Jobs'}]
       }
+    },
+    {
+      path: 'recommendations',
+      component: RecommendationsComponent,
+      data: {
+        title: '',
+        urls: [{title: 'Home', url: '/dashboard'},
+        {title: 'Jobs', url: '/jobs'},
+        {title: 'New Jobs'}]
+      }
+    },
+    {
+      path: 'confirmation',
+      component: ConfirmationComponent,
+      data: {
+        title: '',
+        urls: [{title: 'Home', url: '/dashboard'},
+        {title: 'Jobs', url: '/jobs'},
+        {title: 'New Jobs'}]
+      }
+    },
+    {
+      path: 'submitted',
+      component: SubmissionComponent,
+      data: {
+        title: '',
+        urls: [{title: 'Home', url: '/dashboard'},
+        {title: 'Jobs', url: '/jobs'},
+        {title: 'New Jobs'}]
+      }
     }]
   }
 ];
-
-// export const routes: Routes = [{
-//   path: '',
-//   component: CreateJobComponent,
-//   children: [
-//     {
-//       path: '',
-//       component: JobSettingsComponent
-//     },
-//     {
-//       path: 'jobsettings',
-//       component: JobSettingsComponent,
-//       resolve: {
-//         priorities: PrioritiesResolver,
-//         sites: SitesResolver,
-//         apps: ApplicationsResolver
-//       }
-//     },
-//     {
-//       path: 'recommendations',
-//       component: RecommendationsComponent
-//     },
-//     {
-//       path: 'confirmation',
-//       component: ConfirmationComponent
-//     }
-//   ]
-// }];
 
 @NgModule({
   declarations: [],

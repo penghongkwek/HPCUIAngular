@@ -13,7 +13,8 @@ import { RecommendationsService } from './components/recommendations/recommendat
 import {
   JobSettingsComponent,
   RecommendationsComponent,
-  ConfirmationComponent
+  ConfirmationComponent,
+  SubmissionComponent
 } from './components/index';
 
 import { CreateJobComponent } from './pages/create-job.component';
@@ -35,12 +36,14 @@ import { AppSpecificFormComponent } from './components/job-settings/app-specific
     JobSettingsComponent,
     RecommendationsComponent,
     ConfirmationComponent,
+    SubmissionComponent,
     AppSpecificFormComponent
   ],
   exports: [
     CreateJobComponent,
     JobSettingsComponent,
     RecommendationsComponent,
+    SubmissionComponent,
     ConfirmationComponent,
     AppSpecificFormComponent
   ],

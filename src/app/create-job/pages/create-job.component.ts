@@ -1,10 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { StepsNavWrapperModel } from '../../shared/public_api';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
-import {
-  JobSettingsComponent,
-  RecommendationsComponent
-} from '../components/index';
 
 @Component({
   selector: 'app-create-job',
